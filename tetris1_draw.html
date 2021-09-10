@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <canvas id='can'></canvas>
+
+    <script>
+        //ブロックひとつのサイズ（ピクセル）
+        const BLOCK_SIZE = 30;
+        //テトロミノのサイズ
+        const TETRO_SIZE = 4;
+
+        //画面上に描画
+        let can = document.getElementById('can');
+        let con = can.getContext('2d');
+
+        //二次元配列でブロックを定義
+        let tetro = [
+            [0,0,0,0],
+            [1,1,0,0],
+            [0,1,1,0],
+            [0,0,0,0]
+        ];
+
+        //ループ処理でブロックを表示
+        //ブロック定義の値が１の時ブロックを描画
+        for (let y = 0; y < TETRO_SIZE; y++) {
+            for (let x = 0; x < TETRO_SIZE; x++) {
+                if (tetro[y][x] == 1) {
+                    let px = x * BLOCK_SIZE;
+                    let py = y * BLOCK_SIZE;
+
+                    con.fillStyle = 'red';
+                    con.fillRect(px,py,BLOCK_SIZE,BLOCK_SIZE);
+                    con.strokeStyle = 'black';
+                    con.strokeRect(px,py,BLOCK_SIZE,BLOCK_SIZE);
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
